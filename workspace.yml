@@ -1,0 +1,13 @@
+command('hello'): |
+  #!bash|@
+  passthru "echo @('message')"
+
+command('foo'):
+  env:
+    MESSAGE: = @('message')
+  exec: |
+    #!bash(workspace:/)|@
+    source tools/workspace/scripts/foo.sh
+
+attributes:
+  message: Hello world!
